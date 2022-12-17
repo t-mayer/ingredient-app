@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 @Controller
 public class IndexController {
@@ -47,10 +48,8 @@ public class IndexController {
 
     @GetMapping("/ingredientsAutocomplete")
     @ResponseBody
-    public List<Ingredient> ingredientsAutocomplete(@RequestParam(value="term", required = false, defaultValue = "") String term){
-    //List<String> suggestions = new ArrayList<String> ();
-    List<Ingredient> suggestions = ingredientService.findIngredientsByIngredientName (term);
-    String hello = "ö";
-    return suggestions;
+    public List<String> ingredientsAutocomplete(@RequestParam(value="term", required = false, defaultValue = "") String term){
+        List<String> ingredients = ingredientService.findIngredientsByIngredientName (term);
+        return ingredients;
     }
 }

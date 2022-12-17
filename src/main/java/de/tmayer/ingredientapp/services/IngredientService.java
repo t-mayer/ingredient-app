@@ -12,12 +12,10 @@ public class IngredientService {
     @Autowired
     IngredientRepository ingredientRepository;
 
-    public List<Ingredient> findIngredientsByIngredientName(String ingredientName) {
+    public List<String> findIngredientsByIngredientName(String ingredientName) {
 
         // Get all ingredients and filter.
-        List<Ingredient> allIngredients = ingredientRepository.findDistinctByIngredientNameContaining(ingredientName);
-
-
+        List<String> allIngredients = ingredientRepository.findDistinctByNameContaining(ingredientName);
         return allIngredients;
     }
 }
