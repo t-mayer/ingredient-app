@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <title data-template th:replace=":: title[!data-template]">Recipe Explorer</title>
+
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/common.css}" rel="stylesheet">
+    <style>
+  </style>
+
+</head>
+<body>
+
+<nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
+    <a class="navbar-brand" href="/">
+        <img class="ingredient-logo" width="40px" th:src="@{images/ingredient.png}"/>
+    </a>
+    <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon custom-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" th:href="@{/all-recipes}" href="/all-recipes">Alle Rezepte<span class="sr-only"></span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/info}" href="#">Info</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+</body>
+</html>

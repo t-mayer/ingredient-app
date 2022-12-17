@@ -1,0 +1,12 @@
+ingredient-app:
+  initial: true
+spring:
+  # Local DB config
+  datasource:
+    url: jdbc:mariadb://localhost:3306/recipies
+    username: root
+    password: root
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update

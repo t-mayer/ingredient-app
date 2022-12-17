@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: head">
+    <title>Recipe Explorer</title>
+</head>
+<body>
+
+<span th:replace="fragments/header :: body/content()"></span>
+
+<main>
+
+
+</main>
+<div class="alert alert-warning" role="alert" th:if="${searchResultRecipes.empty}">
+    Leider kein Rezept mit dieser Zutat gefunden! Vielleicht etwas anderes da?
+    <img class="not-found-logo" width="50px" th:src="@{images/appetite.png}"/>
+    <a th:href="@{/}">Weitersuchen!</a>
+</div>
+
+<h4 th:if="${!searchResultRecipes.empty}" th:text="${'Alle Rezepte mit: ' + queries}"></h4>
+
+<ul>
+    <!--- Recipe Grid ----->
+    <div class="container recipes">
+        <div class="row">
+            <div th:each="recipe : ${searchResultRecipes}" class="col-4">
+            <div class="recipe-container">
+                <a class="btn btn-warning" th:href="@{/recipe/__${recipe.id}__}">
+                    <span class="recipe-name" th:text="${recipe.recipeName}"></span>
+                </a>
+            </div>
+            </div>
+        </div>
+    </div>
+
+
+</ul>
+<span th:replace="fragments/footer :: body/content()"></span>
+</body>
+</html>

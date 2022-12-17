@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: head">
+    <title>Recipe Explorer</title>
+</head>
+<body>
+
+<span th:replace="fragments/header :: body/content()"></span>
+
+<main>
+    <div class="alert alert-warning" role="alert">
+         Nichts gefunden!
+        <img class="not-found-logo" width="50px" th:src="@{images/appetite.png}"/>
+        <a th:href="@{/}">Weitersuchen!</a>
+    </div>
+</main>
+
+<span th:replace="fragments/footer :: body/content()"></span>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,110 @@
+.navbar,
+.custom-footer {
+    background-color: #d6e9c1 !important;
+}
+.nav-link {
+       color: #636a63 !important;
+}
+.nav-link:hover {
+    color: #1c1f1c !important
+}
+.ingredient-logo {
+    margin-left: 15px;
+
+}
+.custom-toggler {
+    margin-right: 15px;
+}
+
+.search-recipes {
+    display: flex;
+    justify-content: center;
+    margin: 15px;
+}
+.submit-query:hover,
+.submit-query:active,
+.add-ingredient:hover,
+.add-ingredient:active {
+    background-color: #2b7b2bbd;
+    border-color: #163f16bd;
+}
+
+.ingredients-list {
+    margin: 20px;
+}
+
+[class^="badge bg-secondary ingredient-"] {
+    background-color: #368d36bd !important;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 15px;
+}
+[class^="badge bg-secondary ingredient-"]:hover {
+   cursor: pointer;
+}
+
+[class^="remove-ingredient-"] {
+    padding-left: 5px;
+}
+
+.submit-query {
+    border-radius: 20px !important;
+}
+
+.back-to-top {
+    background-color: #214c21bd;
+    border-color: #163f16bd;
+}
+.back-to-top:hover {
+    background-color: #589c58bd;
+    border-color: #163f16bd;
+}
+.back-to-top > a {
+    color: white;
+}
+a {
+    text-decoration: none;
+    color: #636a63;
+}
+a:hover,
+a:active {
+    color: #1c1f1c;
+}
+
+
+
+
+
+
+
+
+
+
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+
+    body {
+      padding-top: 5rem;
+    }
+    .starter-template {
+      padding: 3rem 1.5rem;
+      text-align: center;
+    }
+
+    div.tt-menu {
+        background-color: white;
+        min-width: 200px;
+        border: 2px solid black;
+    }
