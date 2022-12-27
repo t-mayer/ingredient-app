@@ -33,6 +33,67 @@
     margin: 20px;
 }
 
+.to-recipe {
+    background-color: #214c21bd;
+    border-color: #163f16bd;
+}
+
+.to-recipe > a {
+    color: white;
+}
+
+.to-recipe:hover,
+.to-recipe:active {
+    background-color: #589c58bd;
+    border-color: #163f16bd;
+
+    a {
+       color: #1c1f1c;
+    }
+}
+.card-body {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-between;
+}
+.recipe-card-container {
+    min-height: 100px;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+
+}
+.recipe-card-container:hover,
+.recipe-card-container:active {
+    background-color: #e7f1dc;
+    transition: 0.3s;
+    border: 1 px
+}
+
+.heading-further-ingredients {
+  font-weight: 550;
+  padding-top: 15px;
+  font-size: smaller;
+}
+
+.further-ingredients {
+  list-style: disclosure-closed;
+  font-size: smaller;
+  padding-left: 15px;
+}
+
+.recipe-name {
+  font-weight: 600;
+}
+
+.recipe-name:hover {
+    text-decoration: underline;
+}
+
+.recipe-rating {
+  font-size: small;
+}
+
 [class^="badge bg-secondary ingredient-"] {
     background-color: #368d36bd !important;
     padding: 10px;
@@ -72,43 +133,70 @@ a:active {
     color: #1c1f1c;
 }
 
-
 h4 {
-    color: #1c1f1c;
+    color: #636a63;
     padding: 10px;
 }
 
+ul.ui-autocomplete {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    float: left;
+    display: none;
+    max-width: 400px;
+    margin: 0 0 10px 25px;
+    list-style: none;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-color: rgba(0, 0, 0, 0.2);
+    border-right-width: 2px;
+    border-bottom-width: 2px;
+    max-height: 200px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding-left: 5px;
 
-
-
-
-
-
-    .bd-placeholder-img {
-      font-size: 1.125rem;
-      text-anchor: middle;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
+    li.ui-menu-item{
+        line-height:2em;
+        font-size:.8em;
     }
+}
 
-    @media (min-width: 768px) {
-      .bd-placeholder-img-lg {
-        font-size: 3.5rem;
-      }
-    }
+.ui-state-active {
+    background-color: #d6e9c1;
+}
 
-    body {
-      padding-top: 5rem;
-    }
-    .starter-template {
-      padding: 3rem 1.5rem;
-      text-align: center;
-    }
+.ui-state-active:hover {
+    cursor: pointer;
+}
 
-    div.tt-menu {
-        background-color: white;
-        min-width: 200px;
-        border: 2px solid black;
-    }
+.bd-placeholder-img {
+    font-size: 1.125rem;
+     text-anchor: middle;
+     -webkit-user-select: none;
+     -moz-user-select: none;
+     -ms-user-select: none;
+     user-select: none;
+}
+
+@media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+    font-size: 3.5rem;
+     }
+}
+
+body {
+  padding-top: 5rem;
+}
+.starter-template {
+   padding: 3rem 1.5rem;
+   text-align: center;
+}
+
+div.tt-menu {
+   background-color: white;
+   min-width: 200px;
+   border: 2px solid black;
+}

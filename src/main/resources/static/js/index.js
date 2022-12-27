@@ -36,7 +36,9 @@ $(document).ready(function(){
     $(function() {
         $(".add-ingredient-input").autocomplete({
             source: "/ingredientsAutocomplete",
-            minLength: 3
+            minLength: 3,
+            autoFocus: true
+
         });
     });
 });

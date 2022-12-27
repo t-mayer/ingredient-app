@@ -8,10 +8,6 @@
 
 <span th:replace="fragments/header :: body/content()"></span>
 
-<main>
-
-
-</main>
 <div class="alert alert-warning" role="alert" th:if="${searchResultRecipes.empty}">
     Leider kein Rezept mit dieser Zutat gefunden! Vielleicht etwas anderes da?
     <img class="not-found-logo" width="50px" th:src="@{images/appetite.png}"/>
@@ -20,22 +16,25 @@
 
 <h4 th:if="${!searchResultRecipes.empty}" th:text="${'Alle Rezepte mit: ' + queries}"></h4>
 
-<ul>
-    <!--- Recipe Grid ----->
-    <div class="container recipes">
-        <div class="row">
-            <div th:each="recipe : ${searchResultRecipes}" class="col-4">
-            <div class="recipe-container">
-                <a class="btn btn-warning" th:href="@{/recipe/__${recipe.id}__}">
+    <!--- Recipe Result Grid ----->
+    <div class="container px-4 recipes">
+        <div class="row gy-3">
+            <div th:each="recipe : ${searchResultRecipes}" class="col-lg-4 col-md-6 col-sm-12">
+                <a th:href="@{/recipe/__${recipe.id}__}">
+                <div class="card h-100 recipe-card-container">
                     <span class="recipe-name" th:text="${recipe.recipeName}"></span>
+                    <span class="recipe-rating" th:text="${'Bewertung: ' + recipe.ratingStars + ' / 5'}"></span>
+                    <span class="heading-further-ingredients">Unter anderem werden benötigt: </span>
+                    <ul class="further-ingredients">
+                        <li class="next-ingredient" th:each="ingredient, iterStat : ${recipe.ingredients}" th:if="${iterStat.index} < 3" th:text="${ingredient.ingredientName}">ingredient
+                        ingredient
+                        </li>
+                    </ul>
+                </div>
                 </a>
-            </div>
             </div>
         </div>
     </div>
-
-
-</ul>
 <span th:replace="fragments/footer :: body/content()"></span>
 </body>
 </html>

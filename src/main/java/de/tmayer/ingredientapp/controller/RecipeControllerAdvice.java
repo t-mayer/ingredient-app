@@ -13,7 +13,4 @@ public class RecipeControllerAdvice {
         mav.setViewName("error");
         return mav;
     }
-
-
-
 }
