@@ -10,11 +10,11 @@
 
 <div class="alert alert-warning" role="alert" th:if="${searchResultRecipes.empty}">
     Leider kein Rezept mit dieser Zutat gefunden! Vielleicht etwas anderes da?
-    <img class="not-found-logo" width="50px" th:src="@{images/appetite.png}"/>
+    <img class="not-found-logo" width="100px" th:src="@{/images/appetite.png}"/>
     <a th:href="@{/}">Weitersuchen!</a>
 </div>
 
-<h4 th:if="${!searchResultRecipes.empty}" th:text="${'Alle Rezepte mit: ' + queries}"></h4>
+<h4 th:if="${!searchResultRecipes.empty}" th:text="${totalElems + ' Rezepte mit: ' + queries}" ></h4>
 
     <!--- Recipe Result Grid ----->
     <div class="container px-4 recipes">
@@ -35,6 +35,40 @@
             </div>
         </div>
     </div>
+
+<nav aria-label="pagination">
+   <div class="page-info" th:text="${'Seite ' + currentPage + ' von ' + totalPages}"></div>
+    <ul class="pagination">
+        <li class="page-item" th:classappend="${currentPage eq 1} ? disabled">
+        <a class="page-link" href="#" aria-label="Previous" th:href="@{/search(q=${queries}, page=${currentPage-1})}">
+            <span aria-hidden="true">&laquo;</span>
+            <span class="sr-only"></span>
+        </a>
+        </li>
+        <li class="page-item" th:if="${currentPage-1 != 0}">
+            <a href="#" class="page-link" th:href="@{/search(q=${queries}, page=${currentPage-1})}"
+               th:text="${currentPage-1}">
+            </a>
+        </li>
+        <li class="page-item active">
+            <a href="#" class="page-link" th:href="@{/search(q=${queries}, page=${currentPage})}"
+               th:text="${currentPage}">
+            </a>
+        </li>
+        <li class="page-item" th:if="${currentPage != totalPages}">
+            <a href="#" class="page-link" th:href="@{/search(q=${queries}, page=${currentPage+1})}"
+               th:text="${currentPage+1}">
+            </a>
+        </li>
+        <li class="page-item" th:classappend="${currentPage eq totalPages} ? disabled">
+        <a class="page-link" href="#" aria-label="Next" th:href="@{/search(q=${queries}, page=${currentPage+1})}">
+            <span aria-hidden="true">&raquo;</span>
+            <span class="sr-only"></span>
+        </a>
+        </li>
+    </ul>
+</nav>
+
 <span th:replace="fragments/footer :: body/content()"></span>
 </body>
 </html>

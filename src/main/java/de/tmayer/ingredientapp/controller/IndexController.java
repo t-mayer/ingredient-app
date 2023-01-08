@@ -5,6 +5,9 @@ import de.tmayer.ingredientapp.model.Recipe;
 import de.tmayer.ingredientapp.repository.RecipeRepository;
 import de.tmayer.ingredientapp.services.IngredientService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -36,12 +39,23 @@ public class IndexController {
     }
 
     @GetMapping("/all-recipes")
-    public ModelAndView allRecipes(){
+    public ModelAndView allRecipes( Pageable pageable ){
         ModelAndView mav = new ModelAndView ();
         List<Recipe> allRecipes = recipeRepository.findAll();
 
+        // Set up pagination using PageImpl and subList.
+        int start = (int)pageable.getOffset();
+        int end = Math.min((start + pageable.getPageSize()), allRecipes.size());
+        Page<Recipe> allRecipesPage = new PageImpl<> (allRecipes.subList(start, end), pageable, allRecipes.size());
+        long totalElems = allRecipes.size ();
+        int totalPages = allRecipesPage.getTotalPages ();
+        int currentPage = allRecipesPage.getNumber() + 1; // Start from 1.
+
         // Pass all recipes to template.
-        mav.addObject("recipeList", allRecipes);
+        mav.addObject("recipeList", allRecipesPage);
+        mav.addObject("totalElems", totalElems);
+        mav.addObject("totalPages", totalPages);
+        mav.addObject("currentPage", currentPage);
         mav.setViewName("all-recipes");
         return mav;
     }

@@ -5,30 +5,65 @@
     <title>Recipe Explorer</title>
 </head>
 <body>
-
 <span th:replace="fragments/header :: body/content()"></span>
-
 <main>
-
 <h4>Alle Rezepte entdecken</h4>
 
     <!--- Recipe Grid ----->
-    <div class="container recipes">
-        <div class="row">
-            <div th:each="recipe : ${recipeList}" class="col-4">
-                <div class="recipe-container">
-                    <span class="recipe-name" th:text="${recipe.recipeName}"></span>
-                    <span class="portion-size" th:text="${recipe.portionSize}"></span>
-                    <span class="rating" th:text="${recipe.ratingStars}"></span>
-                </div>
+    <div class="container recipes px-4">
+        <div class="row gy-3">
+            <div th:each="recipe : ${recipeList}" class="col-12" align-self="center">
+                <a th:href="@{/recipe/__${recipe.id}__}">
+                    <div class="card recipe-card-container show-all">
+                        <span class="recipe-name" th:text="${recipe.recipeName}"></span>
+                        <span class="recipe-rating" th:text="${'Bewertung: ' + recipe.ratingStars + ' / 5'}"></span>
+                        <span class="heading-further-ingredients">Hast du diese Lebensmittel zu Hause? </span>
+                        <ul class="further-ingredients">
+                            <li class="next-ingredient" th:each="ingredient, iterStat : ${recipe.ingredients}" th:if="${iterStat.index} < 3" th:text="${ingredient.ingredientName}">ingredient
+                                ingredient
+                            </li>
+                        </ul>
+                    </div>
+                </a>
             </div>
-
         </div>
     </div>
-
 </main>
 
-<span th:replace="fragments/footer :: body/content()"></span>
+<nav aria-label="pagination">
+    <div class="page-info" th:text="${'Seite ' + currentPage + ' von ' + totalPages}"></div>
+    <ul class="pagination">
+        <li class="page-item" th:classappend="${currentPage eq 1} ? disabled">
+            <a class="page-link" href="#" aria-label="Previous" th:href="@{/all-recipes(page=${currentPage-1})}">
+                <span aria-hidden="true">&laquo;</span>
+                <span class="sr-only"></span>
+            </a>
+        </li>
+        <li class="page-item" th:if="${currentPage-1 != 0}">
+            <a href="#" class="page-link" th:href="@{/all-recipes(page=${currentPage-1})}"
+               th:text="${currentPage-1}">
+            </a>
+        </li>
+        <li class="page-item active">
+            <a href="#" class="page-link" th:href="@{/all-recipes(page=${currentPage})}"
+               th:text="${currentPage}">
+            </a>
+        </li>
+        <li class="page-item" th:if="${currentPage != totalPages}">
+            <a href="#" class="page-link" th:href="@{/all-recipes(page=${currentPage+1})}"
+               th:text="${currentPage+1}">
+            </a>
+        </li>
+        <li class="page-item" th:classappend="${currentPage eq totalPages} ? disabled">
+            <a class="page-link" href="#" aria-label="Next" th:href="@{/all-recipes(page=${currentPage+1})}">
+                <span aria-hidden="true">&raquo;</span>
+                <span class="sr-only"></span>
+            </a>
+        </li>
+    </ul>
+</nav>
 
+
+<span th:replace="fragments/footer :: body/content()"></span>
 </body>
 </html>

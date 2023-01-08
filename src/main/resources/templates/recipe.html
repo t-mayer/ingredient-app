@@ -9,9 +9,31 @@
 <span th:replace="fragments/header :: body/content()"></span>
 
 <main>
-
-<div>dieses rezept hat</div>
-
+<h4 th:text="${recipe.recipeName}"></h4>
+    <span class="recipe-rating"></span>
+    <span class="portion-size" th:text="${'Zutaten für ' + recipe.PortionSize + ' Portionen'}"></span>
+    <table class="table ingredients table-hover w-75">
+        <thead>
+        <tr>
+            <th scope="col-md-2">Zutat</th>
+            <th scope="col-md-2">Menge</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="ingredient-name" th:each="ingredient : ${recipe.ingredients}">
+            <td scope="row" th:text="${ingredient.ingredientName}"></td>
+            <td scope="row" th:text="${ingredient.ingredientAmount}"></td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="to-link">
+    <span>Zubereitung: </span>
+    <div class="btn-group">
+        <button type="button" class="btn btn-sm btn-outline-secondary to-recipe">
+        <a th:href="${recipe.recipeUrl}">Zu Chefkoch!</a>
+        </button>
+    </div>
+    </div>
 </main>
 
 <span th:replace="fragments/footer :: body/content()"></span>

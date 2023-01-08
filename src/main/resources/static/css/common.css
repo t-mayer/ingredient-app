@@ -6,7 +6,8 @@
        color: #636a63 !important;
 }
 .nav-link:hover {
-    color: #1c1f1c !important
+    color: #1c1f1c !important;
+    text-decoration: underline;
 }
 .ingredient-logo {
     margin-left: 15px;
@@ -61,8 +62,11 @@
     display: flex;
     justify-content: center;
     padding: 10px;
-
 }
+.show-all {
+    width: 70%
+}
+
 .recipe-card-container:hover,
 .recipe-card-container:active {
     background-color: #e7f1dc;
@@ -98,7 +102,7 @@
     background-color: #368d36bd !important;
     padding: 10px;
     margin: 5px;
-    border-radius: 15px;
+    border-radius: 5px;
 }
 [class^="badge bg-secondary ingredient-"]:hover {
    cursor: pointer;
@@ -109,7 +113,7 @@
 }
 
 .submit-query {
-    border-radius: 20px !important;
+    border-radius: 5px !important;
 }
 
 .back-to-top {
@@ -200,3 +204,53 @@ div.tt-menu {
    min-width: 200px;
    border: 2px solid black;
 }
+
+.alert-warning {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 50px;
+    margin-bottom: 50px;
+    margin-top: 50px;
+}
+
+.search-more:hover {
+    text-decoration: underline;
+}
+
+nav[aria-label="pagination"] {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+}
+
+.page-info {
+  font-size: smaller;
+  color: #636a63;
+  padding: 10px;
+}
+.table-hover tbody tr:hover td {
+    background: #c5f3923b;
+}
+
+.table.ingredients {
+    margin: 20px;
+}
+
+.to-link {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: ;
+    margin-bottom: 50px;
+    gap: 2%;
+    color: #636a63;
+}
+
+.portion-size {
+    color: #636a63;
+}
+
