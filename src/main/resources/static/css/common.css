@@ -5,6 +5,10 @@
 .nav-link {
        color: #636a63 !important;
 }
+.nav-item {
+    margin-left: 15px;
+}
+
 .nav-link:hover {
     color: #1c1f1c !important;
     text-decoration: underline;
