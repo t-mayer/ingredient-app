@@ -12,7 +12,7 @@ import java.util.List;
 @Repository
 public interface IngredientRepository extends JpaRepository<Ingredient, Integer> {
 
-    @Query("SELECT DISTINCT i.ingredientName FROM Ingredient i WHERE i.ingredientName LIKE (CONCAT('%', :name, '%'))")
+    @Query("SELECT DISTINCT i.ingredientName FROM Ingredient i WHERE LOWER(i.ingredientName) LIKE LOWER((CONCAT('%', :name, '%')))")
     List<String> findDistinctByNameContaining(@Param("name") String name);
 
 }
