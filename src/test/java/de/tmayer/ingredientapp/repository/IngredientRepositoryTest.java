@@ -1,6 +1,7 @@
 package de.tmayer.ingredientapp.repository;
 
 import de.tmayer.ingredientapp.model.Ingredient;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -13,7 +14,12 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 class IngredientRepositoryTest {
 
     @Autowired
-    private IngredientRepository underTest;
+    private IngredientRepository ingredientRepositoryUnderTest;
+
+    @AfterEach
+    void tearDown() {
+        ingredientRepositoryUnderTest.deleteAll ();
+    }
 
     @Test
     void itShouldFindDistinctByNameContaining () {
@@ -22,10 +28,10 @@ class IngredientRepositoryTest {
         String exampleIngredientName = "Tofuwürstchen";
         Ingredient ingredient = new Ingredient ();
         ingredient.setIngredientName (exampleIngredientName);
-        underTest.save (ingredient);
+        ingredientRepositoryUnderTest.save (ingredient);
 
         // When.
-        List<String> exists = underTest.findDistinctByNameContaining ("tofu");
+        List<String> exists = ingredientRepositoryUnderTest.findDistinctByNameContaining ("tofu");
 
         // Then.
         assertFalse(exists.isEmpty());
@@ -38,7 +44,7 @@ class IngredientRepositoryTest {
         String toFind = "tofu";
 
         // When.
-        List<String> exists = underTest.findDistinctByNameContaining (toFind);
+        List<String> exists = ingredientRepositoryUnderTest.findDistinctByNameContaining (toFind);
 
         // Then.
         assertThat(exists.isEmpty());
