@@ -225,6 +225,35 @@ nav[aria-label="pagination"] {
   margin: 20px;
 }
 
+.pagination > li > a {
+    background-color: white;
+    color: #589c58bd;
+}
+.pagination > li > a:focus,
+.pagination > li > a:hover {
+    color: #589c58bd;
+}
+
+.pagination > li > a:focus,
+.pagination > li > a:hover,
+.pagination > li > span:focus,
+.pagination > li > span:hover {
+    color: white;
+    background-color: #589c58bd;
+    border-color: #589c58bd;
+}
+
+.pagination > .active > a {
+    color: white;
+    background-color: #589c58bd !Important;
+    border: solid 1px #589c58bd !Important;
+}
+
+.pagination > .active > a:hover {
+    background-color: #589c58bd !Important;
+    border: solid 1px #589c58bd;
+}
+
 .page-info {
   font-size: smaller;
   color: #636a63;
@@ -252,5 +281,10 @@ nav[aria-label="pagination"] {
 
 .portion-size {
     color: #636a63;
+    margin: 20px;
 }
+.portion-size:before {
+    content:"• ";
+}
+
 
