@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 
 @Controller
@@ -50,6 +51,9 @@ public class RecipeSearchController {
         for (String query : queries) {
             queriesList.add(query.replaceAll(",", ""));
         }
+        // Random recipe link in nav bar.
+        Random r = new Random ();
+        int result = r.nextInt(1000-10) + 10;
 
         // Pass necessary objects to template.
         mav.addObject("queries", queriesList);
@@ -57,6 +61,7 @@ public class RecipeSearchController {
         mav.addObject("totalElems", totalElems);
         mav.addObject("totalPages", totalPages);
         mav.addObject("currentPage", currentPage);
+        mav.addObject ("randomRecipe", result);
         mav.setViewName("search-results");
         return mav;
     }

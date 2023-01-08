@@ -30,10 +30,9 @@ public class IndexController {
     public ModelAndView index(){
         ModelAndView mav = new ModelAndView ();
 
-        // Random recipe on main page.
+        // Random recipe link in nav bar.
         Random r = new Random ();
         int result = r.nextInt(1000-10) + 10;
-
         mav.addObject ("randomRecipe", result);
         mav.setViewName("index");
         return mav;
@@ -52,11 +51,16 @@ public class IndexController {
         int totalPages = allRecipesPage.getTotalPages ();
         int currentPage = allRecipesPage.getNumber() + 1; // Start from 1.
 
+        // Random recipe link in nav bar.
+        Random r = new Random ();
+        int result = r.nextInt(1000-10) + 10;
+
         // Pass all recipes to template.
         mav.addObject("recipeList", allRecipesPage);
         mav.addObject("totalElems", totalElems);
         mav.addObject("totalPages", totalPages);
         mav.addObject("currentPage", currentPage);
+        mav.addObject ("randomRecipe", result);
         mav.setViewName("all-recipes");
         return mav;
     }

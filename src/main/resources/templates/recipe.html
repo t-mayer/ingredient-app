@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/header :: head">
+<head th:replace="fragments/header :: head" th:with="var=${randomRecipe}">
     <title>Recipe Explorer</title>
 </head>
 <body>
