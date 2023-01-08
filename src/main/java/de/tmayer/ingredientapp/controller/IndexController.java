@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -41,7 +42,7 @@ public class IndexController {
     @GetMapping("/all-recipes")
     public ModelAndView allRecipes( Pageable pageable ){
         ModelAndView mav = new ModelAndView ();
-        List<Recipe> allRecipes = recipeRepository.findAll();
+        List<Recipe> allRecipes = recipeRepository.findAll(Sort.by(Sort.Direction.ASC, "recipeName"));
 
         // Set up pagination using PageImpl and subList.
         int start = (int)pageable.getOffset();

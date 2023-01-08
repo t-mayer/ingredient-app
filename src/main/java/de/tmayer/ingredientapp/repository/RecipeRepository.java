@@ -13,6 +13,6 @@ import java.util.List;
 @Repository
 public interface RecipeRepository extends JpaRepository<Recipe, Integer> {
 
-    List<Recipe> findByIngredientsIngredientNameContainingIgnoreCase( String ingredientName);
+    List<Recipe> findByIngredientsIngredientNameContainingIgnoreCaseOrderByRecipeNameAsc( String ingredientName);
 
 }

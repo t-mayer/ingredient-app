@@ -16,7 +16,7 @@ public class RecipeService {
 
     public List<Recipe> findAllRecipesByIngredientName( String ingredientName) {
 
-        List<Recipe> foundRecipes = recipeRepository.findByIngredientsIngredientNameContainingIgnoreCase(ingredientName);
+        List<Recipe> foundRecipes = recipeRepository.findByIngredientsIngredientNameContainingIgnoreCaseOrderByRecipeNameAsc(ingredientName);
         return foundRecipes;
     }
 }
